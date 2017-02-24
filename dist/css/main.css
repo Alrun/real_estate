@@ -1682,7 +1682,7 @@ h1, h2, h3, h4, h5, h6 {
   .follow__item {
     display: inline-block;
     vertical-align: middle;
-    margin-left: .2em; }
+    margin-left: 5px; }
   .follow__text {
     color: #fff;
     margin-bottom: 0;
