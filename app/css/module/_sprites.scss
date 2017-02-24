@@ -1,0 +1,96 @@
+@import '../../modules/sprites/svg-sprite';
+
+
+/// Variables
+$fontSize: 16px !default;
+$sprite: map-get($icons, sprite);
+$padding: map-get($sprite, padding);
+
+
+/// Functions
+// Перевод px в em
+@function pxEm($px) {
+  @return ($px / $fontSize) * 1em;
+}
+
+// Сбор всех атрибутов иконок в спрайте
+@function spriteAttr($icon, $attr) {
+	$newIcon: map-get($icons, $icon);
+	@if $newIcon == null {
+		@warn "Not found #{$icon}!";
+	}
+	@return map-get($newIcon, $attr);
+}
+
+// Присваивание атрибутов иконке
+@function iconAttr($icon) {
+	$attr: (
+		w: spriteAttr($icon, width),
+		h: spriteAttr($icon, height),
+		x: spriteAttr($icon, backgroundX),
+		y: spriteAttr($icon, backgroundY),
+		relX: spriteAttr($icon, bgRelativeX),
+		relY: spriteAttr($icon, bgRelativeY)
+	);
+	@return $attr;
+}
+
+
+// Присвоение шаблонных селекторов
+%sprite {
+	display: inline-block;
+	font-size: $fontSize;
+	background-size: pxEm(map-get($sprite, width)) pxEm(map-get($sprite, height));
+	//background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+// Png fallback
+%ie-sprite {
+	background-image: url(map-get($sprite, pngPath));
+  background-image: url(map-get($sprite, svgPath)), none;
+  //background: url(map-get($sprite, pngPath)); // влияют на масштабируемость !
+  //background: url(map-get($sprite, svgPath)), transparent;
+}
+
+
+/// Mixins
+// Вставка иконки
+@mixin sprite($iconName) {
+	@extend %sprite;
+	@extend %ie-sprite;
+	
+	$iconProp: iconAttr($iconName);
+
+	width: pxEm(map-get($iconProp, w));
+	height: pxEm(map-get($iconProp, h));
+	background-position: pxEm(map-get($iconProp, x) - $padding)
+											 pxEm(map-get($iconProp, y) - $padding);
+}
+
+// Адаптивность иконки занимаемой всю ширину блока
+@mixin icon-full-width($iconName) {
+	$iconProp: iconAttr($iconName);
+	$hh: map-get($iconProp, h); // paddingHack height
+	$ww: map-get($iconProp, w); // paddingHack width
+
+	width: 100%;
+	height: auto;
+	padding-top: ($hh + $padding) / $ww * 100%; // paddingHack
+	background-position: map-get($iconProp, relX) map-get($iconProp, relY);
+	background-size: cover;
+}
+
+
+// Examples
+// .svg-tweetter {
+// 	@include sprite(tweetter);
+// }
+
+// .svg-map_full-w {
+// 	@include icon-full-width(map);
+// }
+
+// .follow__icon-tweetter {
+// 	@include sprite(tweetter);
+// }

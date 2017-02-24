@@ -1,0 +1,12 @@
+$icons: (
+	sprite: (width: 118px, height: 516px, padding: 5, pngPath: '../img/sprite.png', svgPath: '../img/sprite.svg'),
+
+	carousel__left: (width: 82px, height: 82px, backgroundX: 0px, backgroundY: 0px, bgRelativeX: 0%, bgRelativeY: 0%),
+	carousel__left_active: (width: 82px, height: 82px, backgroundX: 0px, backgroundY: -92px, bgRelativeX: 0%, bgRelativeY: 21.69811320754717%),
+	carousel__right: (width: 82px, height: 82px, backgroundX: 0px, backgroundY: -184px, bgRelativeX: 0%, bgRelativeY: 43.39622641509434%),
+	carousel__right_active: (width: 82px, height: 82px, backgroundX: 0px, backgroundY: -276px, bgRelativeX: 0%, bgRelativeY: 65.09433962264151%),
+	follow__add: (width: 24px, height: 24px, backgroundX: 0px, backgroundY: -368px, bgRelativeX: 0%, bgRelativeY: 76.34854771784232%),
+	follow__facebook: (width: 24px, height: 24px, backgroundX: 0px, backgroundY: -402px, bgRelativeX: 0%, bgRelativeY: 83.40248962655602%),
+	follow__tweetter: (width: 24px, height: 24px, backgroundX: 0px, backgroundY: -436px, bgRelativeX: 0%, bgRelativeY: 90.45643153526972%),
+	sec-two__map: (width: 108px, height: 36px, backgroundX: 0px, backgroundY: -470px, bgRelativeX: 0%, bgRelativeY: 100%),
+);

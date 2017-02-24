@@ -1,0 +1,21 @@
+{
+  "name": "real_estate",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Alex <fkhey2016@yandex.ru>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "normalize-css": "normalize.css#^5.0.0"
+  }
+}
